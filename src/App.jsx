@@ -1,28 +1,38 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import './App.css'
 
 function App() {
 
-  const [count, setCount] = useState(0)
+  const [todo, setTodo] = useState([
+    {
+      title : "Go To Gym",
+      description : "At 7 PM",
+      isCompleted : false
+    },
+    {
+      title : "Study DSA",
+      description : "HashMaps",
+      isCompleted : true
+    }]);
 
-  return ( <div>
-    <CustomButton count={count} setCount={setCount}></CustomButton>
-    <CustomButton count={count} setCount={setCount}></CustomButton>
-    </div>
+  return (
+    <>
+    {todo.map(function(item){
+      return (
+      <ToDo title={item.title} description={item.description} isCompleted={item.isCompleted} />
+      );
+    })}
+    </>
   )
-}
-
-// Component
-function CustomButton(props)
-{
-  function onClickListener()
+  function ToDo(props)
   {
-    props.setCount(props.count+1);
+    return <>
+    <h1>{props.title}</h1>
+    <h2>{props.description}</h2>
+    <input type="checkbox" id="completed" name="completed" checked={props.isCompleted} />
+    {/* <label htmlFor="completed">Marked as Completed</label> */}
+    </>
   }
-  return <button onClick={onClickListener}>
-    Counter {props.count}
-  </button>
 }
 
 export default App
