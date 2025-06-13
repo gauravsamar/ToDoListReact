@@ -1,16 +1,28 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import './App.css'
 
 function App() {
+
   const [count, setCount] = useState(0)
 
-  return (
-    <div>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+  return ( <div>
+    <CustomButton count={count} setCount={setCount}></CustomButton>
+    <CustomButton count={count} setCount={setCount}></CustomButton>
     </div>
   )
+}
+
+// Component
+function CustomButton(props)
+{
+  function onClickListener()
+  {
+    props.setCount(props.count+1);
+  }
+  return <button onClick={onClickListener}>
+    Counter {props.count}
+  </button>
 }
 
 export default App
