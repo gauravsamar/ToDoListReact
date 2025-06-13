@@ -4,25 +4,23 @@ import './App.css'
 
 function App() {
 
-  const [count, setCount] = useState(0)
+  const [todo, setTodo] = useState([
+    {
+      title : "Go To Gym",
+      description : "At 7 PM",
+      isCompleted : false
+    },
+    {
+      title : "Study DSA",
+      description : "HashMaps",
+      isCompleted : true
+    }]);
 
-  return ( <div>
-    <CustomButton count={count} setCount={setCount}></CustomButton>
-    <CustomButton count={count} setCount={setCount}></CustomButton>
-    </div>
+  return (
+    <>
+    {JSON.stringify(todo)}
+    </>
   )
-}
-
-// Component
-function CustomButton(props)
-{
-  function onClickListener()
-  {
-    props.setCount(props.count+1);
-  }
-  return <button onClick={onClickListener}>
-    Counter {props.count}
-  </button>
 }
 
 export default App
